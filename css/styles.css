@@ -1,11 +1,13 @@
 body{
     font-family: Arial, sans-serif;
-    background-color: #AF7EEB;
+    background-color: #FAF0EF;
+    
 }
 
 .btn-add-task{
     background-color: blueviolet;
-    margin-left: 10px;
+    color: #ffffff;
+   font-size: small;
 }
 
 .btn-add-task:hover{
@@ -13,9 +15,53 @@ body{
 }
 
 .container{
+    background: linear-gradient(#AF7EEB 30%, #ffffff 30%);  
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgb(126, 124, 124);
     max-width: 500px;
+    height: 80vh;
     padding: 20px;
-    box-shadow: 0 0 10px rgb(0, 0, 0.1);
+    border-radius: 15px;
+
+}
+
+.form-container{
+    background-color: #ffff;
+    box-shadow: 0 2px 8px rgb(126, 124, 124);
+    height: 20vh;
+    border-radius: 8px;
+    color: #AF7EEB;
+    text-align: center;
+}
+
+.form-control{
+    border: 0;
+    max-width: 300px;
+    text-align: center;
+    margin: 20px;
+    border-bottom: 1px solid #AF7EEB;
+    outline: none;
+    
+}
+
+.form-control:focus{
+    box-shadow: none;
+    border-color: none;
+}
+
+.list-container{
+    background-color: #ffff;
+    box-shadow: 0 2px 8px rgb(126, 124, 124);
+    height: 40vh;
+    color: #AF7EEB;
+}
+
+.list-container{
+    padding: 10px;
+}
+
+.taskForm{
+    padding: 20px;
 }
 
 
