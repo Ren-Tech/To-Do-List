@@ -4,21 +4,49 @@ const newTaskInput = document.getElementById("newTask");
 const taskList = document.getElementById("taskList");
 
 
+// Event listener for form submission
 taskForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
   const newTaskValue = newTaskInput.value.trim();
 
-  //Add the new task to the list
   if (newTaskValue !== "") {
-    addTaskToList(newTaskValue);
-    taskForm.reset(); 
+    // Add task to the database
+    addTaskToDatabase(newTaskValue);
   }
 });
 
+// Function to add task to the database
+function addTaskToDatabase(taskName) {
+  fetch("tasks.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: "taskName=" + encodeURIComponent(taskName),
+  })
+    .then((response) => response.json())
+    .then(addTaskToList)
+    .catch((error) => console.error("Error adding task:", error));
+}
+
+// Function to delete task from the database
+function deleteTaskFromDatabase(taskId) {
+  fetch("tasks.php", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: "taskId=" + encodeURIComponent(taskId),
+  })
+    .then((response) => response.json())
+    .then(addTaskToList)
+    .catch((error) => console.error("Error deleting task:", error));
+}
 
 
 function addTaskToList(task) {
+  
  const listItem = document.createElement("li");
  listItem.className="list-group-item d-flex justify-content-between align-items-center";
  
@@ -30,8 +58,9 @@ function addTaskToList(task) {
  const checkButton = document.createElement("button");
  checkButton.className = "btn btn-outline-success btn-sm order-2";
  checkButton.innerHTML = '<i class="fas fa-check"></i>';
- checkButton.addEventListener("click", function(){
+ checkButton.addEventListener("click", function (){
   listItem.classList.toggle("completed");
+  toggleTaskStyle(taskText, listItem.classList.contains("completed"), checkButton);
  });
 
  const trashButton = document.createElement("button");
@@ -50,7 +79,22 @@ function addTaskToList(task) {
 }
 
 
-function deleteTask(button) {
-  const listItem = button.parentNode;
+function deleteTask(listItem) {
+
   taskList.removeChild(listItem);
+}
+
+function toggleTaskStyle(taskText, completed, checkButton,){
+  if(completed){
+    taskText.style.textDecoration = "line-through";
+    taskText.style.color = "grey";
+    checkButton.style.backgroundColor = "green"
+    
+  }else{
+    taskText.style.textDecoration = "none";
+    taskText.style.color = "inherit";
+    checkButton.style.backgroundColor = ""; 
+  
+  }
+
 }
