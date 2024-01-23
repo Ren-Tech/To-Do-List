@@ -41,4 +41,4 @@ if ($_SERVER["REQUEST_METHOD"] == "DELETE") {
 $conn->close();
 
 echo json_encode($tasks);
-?>
+
