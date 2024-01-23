@@ -26,7 +26,7 @@
             </form>
 
         </div>
-        <!-- Task list display -->
+       
         <p>
         <div class="list-container">
             <b>TODO LIST</b>

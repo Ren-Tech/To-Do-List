@@ -22,6 +22,7 @@ body{
     height: 80vh;
     padding: 20px;
     border-radius: 15px;
+    overflow: auto;
 
 }
 
@@ -54,10 +55,24 @@ body{
     box-shadow: 0 2px 8px rgb(126, 124, 124);
     height: 40vh;
     color: #AF7EEB;
+    overflow: auto;
+    max-height: 300px;
 }
+
+.list-group{
+    max-height: 100%;
+    overflow: auto;
+}
+
+::-webkit-scrollbar{
+    width: 0;
+}
+
 
 .list-container{
     padding: 10px;
+    max-height: 100vj;
+    overflow: hidden;
 }
 
 .taskForm{
